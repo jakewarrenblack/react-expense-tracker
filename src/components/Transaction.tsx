@@ -1,3 +1,4 @@
+import clsx from "clsx";
 import { Transaction as TransactionType } from "../context/GlobalState";
 
 export const Transaction = ({
@@ -9,7 +10,12 @@ export const Transaction = ({
 
   // using math abs to make it always positive
   return (
-    <li className="flex justify-between">
+    <li
+      className={clsx(
+        "flex my-2 justify-between pr-4 border-4",
+        sign === "-" ? "border-r-red-500" : "border-r-green-500"
+      )}
+    >
       {transaction.text}
       <span>
         {sign}${Math.abs(transaction.amount)}
