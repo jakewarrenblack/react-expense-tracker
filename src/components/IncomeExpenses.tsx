@@ -1,13 +1,13 @@
 export const IncomeExpenses = () => {
   return (
-    <div className="inc-exp-container">
-      <div>
+    <div className="flex w-full justify-between">
+      <div className="">
         <h4>Income</h4>
-        <p className="money plus">+$0.00</p>
+        <p className="text-green-700">+$0.00</p>
       </div>
-      <div>
+      <div className="0">
         <h4>Expense</h4>
-        <p className="money minus">-$0.00</p>
+        <p className="text-red-700">-$0.00</p>
       </div>
     </div>
   );
