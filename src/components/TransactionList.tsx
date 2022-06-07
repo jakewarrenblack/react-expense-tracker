@@ -6,9 +6,9 @@ export const TransactionList = () => {
         <li className="flex justify-between">
           Cash
           <span>-$400</span>
-          <button className="border bg-red-700 text-white border-none rounded-lg h-min w-4">
+          {/* <button className="border bg-red-700 text-white border-none rounded-lg h-min w-4">
             x
-          </button>
+          </button> */}
         </li>
       </ul>
     </>

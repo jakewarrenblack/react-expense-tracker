@@ -36,6 +36,9 @@ export const AddTransaction = () => {
             onChange={(e) => setAmount(parseInt(e.target.value))}
             placeholder="Enter amount..."
           />
+          <button className="bg-purple-300 p-2 uppercase text-lg mt-4 rounded-sm">
+            Add Transaction
+          </button>
         </div>
       </form>
     </div>
