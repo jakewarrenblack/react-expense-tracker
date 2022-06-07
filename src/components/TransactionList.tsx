@@ -1,4 +1,10 @@
+import { useContext } from "react";
+import { GlobalContext } from "../context/GlobalState";
+
 export const TransactionList = () => {
+  // Can now get access to our global state
+  const context = useContext(GlobalContext);
+
   return (
     <>
       <h3 className="font-semibold">History</h3>
