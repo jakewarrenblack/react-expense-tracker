@@ -8,8 +8,6 @@ export const IncomeExpenses = () => {
 
   const amounts = transactions.map((transaction) => transaction.amount);
 
-  // these methods are confusing to me, specifically the reduce()
-
   // calculate total income
   const income = amounts
     .filter((item) => item > 0)

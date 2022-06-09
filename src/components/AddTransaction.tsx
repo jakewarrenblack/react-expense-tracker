@@ -5,14 +5,14 @@ export const AddTransaction = () => {
   const { addTransaction, transactions } = useContext(GlobalContext);
 
   const [values, setValues] = useState({
-    id: transactions.length,
+    id: 0,
     text: "",
     amount: 0,
   });
 
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    addTransaction({ ...values });
+    addTransaction({ ...values, id: Math.random() * 10000 });
   };
 
   return (
@@ -26,6 +26,7 @@ export const AddTransaction = () => {
             Text
           </label>
           <input
+            required
             type="text"
             id="text"
             value={values.text}
@@ -41,6 +42,7 @@ export const AddTransaction = () => {
             </span>
           </label>
           <input
+            required
             className="mt-2"
             type="number"
             value={values.amount}

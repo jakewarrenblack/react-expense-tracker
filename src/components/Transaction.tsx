@@ -28,8 +28,3 @@ export const Transaction = ({
     </li>
   );
 };
-
-// 39:00
-
-// problem now is trying to figure out how to type deleteTransaction
-// complaining in GlobalState
