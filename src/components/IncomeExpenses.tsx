@@ -24,11 +24,11 @@ export const IncomeExpenses = () => {
 
   return (
     <div className="flex w-full justify-between">
-      <div className="">
+      <div>
         <h4>Income</h4>
         <p className="text-green-700">{income}</p>
       </div>
-      <div className="0">
+      <div>
         <h4>Expense</h4>
         <p className="text-red-700">{expense}</p>
       </div>
