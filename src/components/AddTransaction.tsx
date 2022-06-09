@@ -1,15 +1,26 @@
-import { useState } from "react";
+import { useContext, useState } from "react";
+import { GlobalContext } from "../context/GlobalState";
 
 export const AddTransaction = () => {
-  const [text, setText] = useState("");
-  const [amount, setAmount] = useState(0);
+  const { addTransaction, transactions } = useContext(GlobalContext);
+
+  const [values, setValues] = useState({
+    id: transactions.length,
+    text: "",
+    amount: 0,
+  });
+
+  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    addTransaction({ ...values });
+  };
 
   return (
     <div>
       <h3 className="border-2 border-b-gray-400 pb-2 text-lg font-semibold">
         Add new transaction
       </h3>
-      <form className="space-y-4">
+      <form onSubmit={(e) => handleSubmit(e)} className="space-y-4">
         <div className="flex flex-col mt-4">
           <label htmlFor="text" className="font-semibold">
             Text
@@ -17,8 +28,8 @@ export const AddTransaction = () => {
           <input
             type="text"
             id="text"
-            value={text}
-            onChange={(e) => setText(e.target.value)}
+            value={values.text}
+            onChange={(e) => setValues({ ...values, text: e.target.value })}
             placeholder="Enter text..."
           />
         </div>
@@ -32,11 +43,16 @@ export const AddTransaction = () => {
           <input
             className="mt-2"
             type="number"
-            value={amount}
-            onChange={(e) => setAmount(parseInt(e.target.value))}
+            value={values.amount}
+            onChange={(e) =>
+              setValues({ ...values, amount: parseInt(e.target.value) })
+            }
             placeholder="Enter amount..."
           />
-          <button className="bg-purple-300 p-2 uppercase text-lg mt-4 rounded-sm">
+          <button
+            type="submit"
+            className="bg-purple-300 p-2 uppercase text-lg mt-4 rounded-sm"
+          >
             Add Transaction
           </button>
         </div>

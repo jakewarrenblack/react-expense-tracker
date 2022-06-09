@@ -14,6 +14,7 @@ export type Transaction = {
 export type GlobalContextType = {
   transactions: Transaction[];
   deleteTransaction: (id: number) => void;
+  addTransaction: (transaction: Transaction) => void;
 };
 
 // expense = negative, income = positive
@@ -32,6 +33,7 @@ export const initialState: {
 export const GlobalContext = createContext<GlobalContextType>({
   transactions: initialState.transactions,
   deleteTransaction: () => {},
+  addTransaction: () => {},
 });
 
 // In order for other components to access the state, they need to be wrapped in a provider
@@ -42,13 +44,20 @@ export const GlobalProvider = ({ children }: { children: ReactNode }) => {
   const [state, dispatch] = useReducer(AppReducer, initialState);
 
   // Actions
-  function deleteTransaction(id: number) {
+  const deleteTransaction = (id: number) => {
     // we send an object to the reducer through our dispatch method
     dispatch({
       type: "DELETE_TRANSACTION",
       payload: id,
     });
-  }
+  };
+
+  const addTransaction = (transaction: Transaction) => {
+    dispatch({
+      type: "ADD_TRANSACTION",
+      payload: transaction,
+    });
+  };
 
   // the children will then be whatever we've wrapped inside the context,
   // which then provides state and actions to its children
@@ -57,6 +66,7 @@ export const GlobalProvider = ({ children }: { children: ReactNode }) => {
       value={{
         transactions: state.transactions,
         deleteTransaction: deleteTransaction,
+        addTransaction: addTransaction,
       }}
     >
       {children}
